@@ -1,0 +1,61 @@
+--- Standard Training Dataset Directory with a Single Train-Val-Test Split: ---
+Example: "/standardSplit_TS_TUHAbnormal_data_20210920/train/train_subset0.pkl"
+1. Root Dataset Save Directory Name
+ * Folder name structure:
+    - 1st element: "standardSplit_"; identifies the directory as containing a single train-val-test split
+    - 2nd element: task_id_str+"_"; a descriptive string identifying the task for which the dataset was currated (e.g. "cdisnRP", "TS", "MYOWMined", etc)
+    - 3rd element: data_source_str+"_"; a descriptive string identifying the source of the dataset (e.g. "TUHAbnormal")
+    - 4th element: "data_"+date_str; date_str states the date the data-split was generated, formatted as YYYYMMDD
+ * Contents:
+    - Subdirectories: train/, validation/, test/
+    - Other:
+       * dataset_configuration.pkl: a file containing a python dict object storing info such as
+          - "source_info": where the dataset was sourced from
+          - "config_args": the arguments given to the preprocessing pipeline when the split was generated
+          - other info as needed
+2. Train-Val-Test Subdirectory Name
+ * Folder name structure: one of 'train/', 'validation/', or 'test/'
+ * Contents:
+    - Subset Files: .pkl files containing a subset (i.e. multiple batches) of the train/val/test set to iterate over
+
+--- Cross-Val Training Dataset Directory with n Train-Val-Test Splits: ---
+Example: "/crossValSplit_TS_TUHAbnormal_data_20210920/train2/train_subset0.pkl"
+1. Root Dataset Save Directory Name
+ * Folder name structure:
+    - 1st element: "crossValSplit_"; identifies the directory as containing n train-val splits and (optionally) 1 holdout test set
+    - 2nd element: task_id_str+"_"; a descriptive string identifying the task for which the dataset was currated (e.g. "cdisnRP", "TS", "MYOWMined", etc)
+    - 3rd element: data_source_str+"_"; a descriptive string identifying the source of the dataset (e.g. "TUHAbnormal")
+    - 4th element: throttle_percent_str+"percentOfData_"+date_str; throttle_percent_str indicates the portion of the dataset used and date_str states the date the data-split was generated, formatted as YYYYMMDD
+ * Contents:
+    - Subdirectories: train1/, validation1/, ..., trainN/, validationN/, and (optionally) test/
+    - Other:
+       * dataset_configuration.pkl: a file containing a python dict object storing info such as
+          - "source_info": where the dataset was sourced from
+          - "config_args": the arguments given to the preprocessing pipeline when the split was generated
+          - other info as needed
+2. Train-Val-Test Subdirectory Name
+ * Folder name structure: one of 'trainX/', 'validationX/', or 'test/'
+ * Contents:
+    - Subset Files: .pkl files containing a subset (i.e. multiple batches) of the train/val/test set to iterate over
+
+--- Training/Evaluation Results Directory: ---
+Example: "/TSSup_CVSTUHAbnormal_results_20210920/sup/sup_model_epoch0.pkl"
+1. Root Results Save Directory Name
+ * Folder name structure:
+    - 1st element: task_id_str+"_"; a descriptive string identifying the alg/task for which the algorithm was trained to solve (e.g. "cdisnRPSup", "TSSup", "MYOW", etc)
+    - 2nd element: training_type_id_str; identifies the type of train-val-test split(s) (either 'CVS' or 'SS') used to train the algorithm
+    - 3rd element: data_source_str+"_"; a descriptive string identifying the source of the dataset used in the split (e.g. "TUHAbnormal")
+    - 4th element: "results_"+date_str; date_str states the date the algorithm/task training was initiated, formatted as YYYYMMDD
+ * Contents:
+    - Subdirectories: task1ID/, task2ID/, ..., taskNID/
+    - Other:
+       * training_configuration.pkl: a file containing a python dict object storing info such as
+          - "data_info": description of the data split(s) used in training
+          - "config_args": the arguments given to the training pipeline when training was initiated
+          - other info as needed
+2. TaskID Subdirectory Name
+ * Folder name structure: a descriptive string identifying the SUB-alg/task involved in training (e.g. "RP", "DS", "TS", etc)
+ * Contents:
+    - Model Files: .bin/.pkl files storing a train/partially-trained learning agent (typically a DNN), named with 1st element as task_id and 2nd element as "_epochX" or "_final"
+    - ROC/accuracy plots: .png files storing ROC/accuracy plots genrated during training, named with 1st element as 'train'/'validation'/'test' and 2nd element as 'ROC'/'accuracy' and 3rd element as "_epochX" or "_final"
+    - other info as needed

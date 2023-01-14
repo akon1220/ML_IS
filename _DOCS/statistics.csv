@@ -1,0 +1,48 @@
+dev:
+total files: 1013
+total sessions: 238
+total patients: 50
+
+files with seizures: 280
+sessions with seizures: 104
+patients with seizures: 40
+total number of seizures: 673
+
+total seizure duration: 58445.1066 secs (9.5300%)
+total background duration: 554786.8934 secs
+total duration: 613232.0000 secs
+total duration of files with seizures: 230031.0000 secs (37.5100%)
+-----------------------------
+
+eval:
+total files: 1023
+total sessions: 152
+total patients: 50
+
+files with seizures: 235
+sessions with seizures: 78
+patients with seizures: 42
+total number of seizures: 511
+
+total seizure duration: 37884.6308 secs (6.9700%)
+total background duration: 505250.3692 secs
+total duration: 543135.0000 secs
+total duration of files with seizures: 187129.0000 secs (34.4500%)
+-----------------------------
+
+train:
+total files: 4599
+total sessions: 1185
+total patients: 592
+
+files with seizures: 869
+sessions with seizures: 343
+patients with seizures: 202
+total number of seizures: 2377
+
+total seizure duration: 169793.7430 secs (6.2600%)
+total background duration: 2540689.2570 secs
+total duration: 2710483.0000 secs
+total duration of files with seizures: 637689.0000 secs (23.5200%)
+-----------------------------
+

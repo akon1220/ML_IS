@@ -1,0 +1,7 @@
+To facilitate reproduceability in experiments, the following standards will be applied broadly across the repository:
+    1) All datasets used for training and evaluating models must be cached. (see file_directory_templates.txt for
+       additional guidance as to how cached datasets should be formatted)
+    2) Functions and classes which cache a Dataset or Trained Model, MUST cache the parameters passed into the
+       said function/class (especially those used to configure the dataset or model) in the same directory to which
+       the dataset/model is saved. (see utils.caching_utils.cache_args for an arg-caching method)
+    3) Functions and classes used for training models must have a means of accepting cached arg files.
